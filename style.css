@@ -1,5 +1,38 @@
+div#menu {
+    position: absolute;
+    left: 50%;
+    margin-left: -155px;
+    top: 50%;
+    margin-top: -155px;
+    /* background-color: blue; */
+    text-align: center;
+    display: block;
+    height: 310px;
+    width: 310px;
+    justify-content: center;
+    /* display: none; */
+}
+
+div#menu button {
+    border: none;
+    padding: 10px 15px;
+    margin: 0 10px;
+    border-radius: 15%;
+    cursor: pointer;
+}
+
+div#menu h1 {
+    font-size: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 table {
     border-collapse: collapse;
+    position: absolute;
+    left: 50%;
+    margin-left: -155px;
+    top: 50%;
+    margin-top: -155px;
 }
 
 table tr td {
@@ -7,6 +40,8 @@ table tr td {
     width: 100px;
     height: 100px;
     cursor: pointer;
+    font-size: 70px;
+    text-align: center;
 }
 
 table tr td:first-child {

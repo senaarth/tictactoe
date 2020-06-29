@@ -10,7 +10,7 @@ div#menu {
     height: 310px;
     width: 310px;
     justify-content: center;
-    /* display: none; */
+    display: none;
 }
 
 div#menu button {

@@ -11,6 +11,7 @@ let casa6 = document.getElementById('6')
 let casa7 = document.getElementById('7')
 let casa8 = document.getElementById('8')
 let casa9 = document.getElementById('9')
+let message = document.getElementById('gameover')
 
 
 
@@ -55,7 +56,7 @@ function checkWin() {
         casa3.innerText == 'X' && casa5.innerText == 'X' && casa7.innerText == 'X'
     ) {
         setTimeout(function() {
-            gameOver();
+            gameOver("X");
         }, 250)
         return true;
     } else if (
@@ -68,14 +69,20 @@ function checkWin() {
         casa1.innerText == 'O' && casa5.innerText == 'O' && casa9.innerText == 'O' ||
         casa3.innerText == 'O' && casa5.innerText == 'O' && casa7.innerText == 'O') {
         setTimeout(function() {
-            gameOver();
+            gameOver("O");
         }, 250)
         return true;
     }
 }
 
 // Game Over Function
-function gameOver() {
+function gameOver(winner) {
     var endgame = document.getElementById('endgame');
     endgame.style.display = "block";
+    if(winner=='X'){
+        message.innerText = 'GAME OVER \n X Venceu'
+    }
+    else if(winner=='O'){
+        message.innerText = 'GAME OVER \n O Venceu'
+    }
 }

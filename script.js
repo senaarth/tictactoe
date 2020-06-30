@@ -25,6 +25,9 @@ for (i = 0; i < fields.length; i++) {
         } else {
             filled = true;
         }
+        if (checkWin()) {
+            filled = true;
+        }
         if (!filled) {
             // filling the field after verifying which turn is
             if (plays1 == plays2) {
@@ -54,6 +57,7 @@ function checkWin() {
         setTimeout(function() {
             gameOver();
         }, 250)
+        return true;
     } else if (
         casa1.innerText == 'O' && casa2.innerText == 'O' && casa3.innerText == 'O' ||
         casa4.innerText == 'O' && casa5.innerText == 'O' && casa6.innerText == 'O' ||
@@ -66,12 +70,12 @@ function checkWin() {
         setTimeout(function() {
             gameOver();
         }, 250)
+        return true;
     }
 }
 
 // Game Over Function
-
 function gameOver() {
-    const endgame = document.getElementById("endgame");
-    endgame.classList.remove("hidden");
+    var endgame = document.getElementById('endgame');
+    endgame.style.display = "block";
 }

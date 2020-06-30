@@ -2,8 +2,6 @@
 let boxes = document.querySelectorAll("td")
 let plays1 = 0;
 let plays2 = 0;
-let player1 = []
-let player2 = []
 
 // Adding click in each field
 for (i = 0; i < boxes.length; i++) {
@@ -16,7 +14,6 @@ for (i = 0; i < boxes.length; i++) {
             filled = true;
         }
         if (!filled) {
-
             // filling the field after verifying which turn is
             if (plays1 == plays2) {
                 this.innerText = "X";
@@ -30,6 +27,5 @@ for (i = 0; i < boxes.length; i++) {
     })
 }
 
-
-// function for check winner
-function checkWin(){}
+// function for check possible winner
+function checkWin() {}

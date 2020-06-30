@@ -15,8 +15,6 @@ let casa9 = document.getElementById('9')
 
 
 
-
-
 // Adding click in each field
 for (i = 0; i < fields.length; i++) {
     fields[i].addEventListener("click", function() {
@@ -52,17 +50,28 @@ function checkWin() {
         casa3.innerText == 'X' && casa6.innerText == 'X' && casa9.innerText == 'X' ||
         casa1.innerText == 'X' && casa5.innerText == 'X' && casa9.innerText == 'X' ||
         casa3.innerText == 'X' && casa5.innerText == 'X' && casa7.innerText == 'X'
-        ){
-            gameOver()
-        }
-        else if (casa1.innerText == 'O' && casa2.innerText == 'O' && casa3.innerText == 'O' ||
+    ) {
+        setTimeout(function() {
+            gameOver();
+        }, 250)
+    } else if (
+        casa1.innerText == 'O' && casa2.innerText == 'O' && casa3.innerText == 'O' ||
         casa4.innerText == 'O' && casa5.innerText == 'O' && casa6.innerText == 'O' ||
         casa7.innerText == 'O' && casa8.innerText == 'O' && casa9.innerText == 'O' ||
         casa1.innerText == 'O' && casa4.innerText == 'O' && casa7.innerText == 'O' ||
         casa2.innerText == 'O' && casa5.innerText == 'O' && casa8.innerText == 'O' ||
         casa3.innerText == 'O' && casa6.innerText == 'O' && casa9.innerText == 'O' ||
         casa1.innerText == 'O' && casa5.innerText == 'O' && casa9.innerText == 'O' ||
-        casa3.innerText == 'O' && casa5.innerText == 'O' && casa7.innerText == 'O'){
-            gameOver()
-        }
+        casa3.innerText == 'O' && casa5.innerText == 'O' && casa7.innerText == 'O') {
+        setTimeout(function() {
+            gameOver();
+        }, 250)
+    }
+}
+
+// Game Over Function
+
+function gameOver() {
+    const endgame = document.getElementById("endgame");
+    endgame.classList.remove("hidden");
 }

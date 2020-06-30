@@ -1,4 +1,5 @@
-div#menu {
+div#menu,
+div#endgame {
     position: absolute;
     left: 50%;
     margin-left: -155px;

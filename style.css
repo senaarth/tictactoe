@@ -1,9 +1,23 @@
-div#menu,
-div#endgame {
+div#menu {
     position: absolute;
     left: 50%;
     margin-left: -155px;
     top: 50%;
+    margin-top: -155px;
+    /* background-color: blue; */
+    text-align: center;
+    display: block;
+    height: 310px;
+    width: 310px;
+    justify-content: center;
+    display: none;
+}
+
+div#endgame {
+    position: absolute;
+    left: 50%;
+    margin-left: -155px;
+    top: 30%;
     margin-top: -155px;
     /* background-color: blue; */
     text-align: center;

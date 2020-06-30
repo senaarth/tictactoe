@@ -79,10 +79,18 @@ function checkWin() {
 function gameOver(winner) {
     var endgame = document.getElementById('endgame');
     endgame.style.display = "block";
-    if(winner=='X'){
+    if (winner == 'X') {
         message.innerText = 'GAME OVER \n X Venceu'
-    }
-    else if(winner=='O'){
+    } else if (winner == 'O') {
         message.innerText = 'GAME OVER \n O Venceu'
     }
+}
+
+// Replay Button
+function replay() {
+    for (i = 0; i < fields.length; i++) {
+        fields[i].innerText = "";
+    }
+    endgame.style.display = "none";
+    plays1 = plays2 = 0;
 }

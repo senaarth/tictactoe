@@ -12,7 +12,7 @@ let casa7 = document.getElementById('7')
 let casa8 = document.getElementById('8')
 let casa9 = document.getElementById('9')
 let message = document.getElementById('gameover')
-
+counter = 0;
 
 
 
@@ -30,6 +30,8 @@ for (i = 0; i < fields.length; i++) {
             filled = true;
         }
         if (!filled) {
+            counter++
+            console.log('contador')
             // filling the field after verifying which turn is
             if (plays1 == plays2) {
                 this.innerText = "X";
@@ -73,6 +75,11 @@ function checkWin() {
         }, 250)
         return true;
     }
+    else if(counter==9){
+        setTimeout(function() {
+            gameOver();
+        }, 250)
+    }
 }
 
 // Game Over Function
@@ -84,6 +91,9 @@ function gameOver(winner) {
     } else if (winner == 'O') {
         message.innerText = 'GAME OVER \n O Venceu'
     }
+    else{
+        message.innerText = 'DEU VELHA'
+    }
 }
 
 // Replay Button
@@ -92,5 +102,5 @@ function replay() {
         fields[i].innerText = "";
     }
     endgame.style.display = "none";
-    plays1 = plays2 = 0;
+    plays1 = plays2 = counter = 0;
 }

@@ -10,7 +10,6 @@ div#menu {
     height: 310px;
     width: 310px;
     justify-content: center;
-    display: none;
 }
 
 div#endgame {
@@ -48,13 +47,13 @@ table {
     margin-left: -155px;
     top: 50%;
     margin-top: -155px;
+    display: none;
 }
 
 table tr td {
     border: 2px solid #000000;
     width: 100px;
     height: 100px;
-    cursor: pointer;
     font-size: 70px;
     text-align: center;
 }

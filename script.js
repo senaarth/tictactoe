@@ -69,7 +69,7 @@ function gameOver(winner) {
 }
 
 // Replay Button
-function replay() {
+function replay(menu) {
     counter = 0;
     for (i = 0; i < fields.length; i++) {
         fields[i].innerText = '';
@@ -77,8 +77,10 @@ function replay() {
     endgame.style.display = 'none';
     plays1 = plays2 = 0;
 
-    for (i = 0; i < fields.length; i++) {
-        fields[i].removeEventListener('click', multiPlayer)
+    if (menu == 'menu') {
+        for (i = 0; i < fields.length; i++) {
+            fields[i].removeEventListener('click', multiPlayer)
+        }
     }
 }
 
@@ -99,7 +101,7 @@ function mainMenu() {
     menu.style.display = 'block';
     menuImg.style.display = 'block';
     hash.style.display = 'none';
-    replay();
+    replay("menu");
 }
 
 // Single Player mode

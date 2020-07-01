@@ -14,6 +14,7 @@ let casa9 = document.getElementById('9');
 let message = document.getElementById('gameover');
 let endgame = document.getElementById('endgame');
 let menu = document.getElementById('menu');
+let menuImg = document.getElementById('menuImg');
 let hash = document.getElementById('hash');
 let counter = 0;
 
@@ -84,6 +85,7 @@ function replay() {
 // Function for start the game
 function start(gameMode) {
     menu.style.display = 'none';
+    menuImg.style.display = 'none';
     hash.style.display = 'block';
     if (gameMode == 'single') {
         singleMode();
@@ -95,6 +97,7 @@ function start(gameMode) {
 // Return to menu function
 function mainMenu() {
     menu.style.display = 'block';
+    menuImg.style.display = 'block';
     hash.style.display = 'none';
     replay();
 }

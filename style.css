@@ -1,15 +1,21 @@
+body {
+    background-image: url("/assets/background.png");
+}
+
 div#menu {
     position: absolute;
     left: 50%;
     margin-left: -155px;
-    top: 50%;
-    margin-top: -155px;
-    /* background-color: blue; */
+    bottom: 30%;
     text-align: center;
     display: block;
-    height: 310px;
-    width: 310px;
     justify-content: center;
+}
+
+img#menuImg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 div#endgame {
@@ -18,7 +24,6 @@ div#endgame {
     margin-left: -155px;
     top: 30%;
     margin-top: -155px;
-    /* background-color: blue; */
     text-align: center;
     display: block;
     height: 310px;

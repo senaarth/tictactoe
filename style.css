@@ -21,6 +21,8 @@ img#menuImg {
 }
 
 div#endgame {
+    font-size: 15px;
+    color: #cb8e6b;
     position: absolute;
     left: 50%;
     margin-left: -171px;
@@ -40,11 +42,6 @@ button {
     margin: 0 10px;
     border-radius: 15%;
     cursor: pointer;
-}
-
-div#menu h1 {
-    font-size: 45px;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 table {

@@ -60,11 +60,11 @@ function gameOver(winner) {
     counter = 0;
     endgame.style.display = 'block';
     if (winner == 'X') {
-        message.innerText = 'GAME OVER \n X Venceu';
+        message.innerText = 'GAME OVER \n X VENCEU';
     } else if (winner == 'O') {
-        message.innerText = 'GAME OVER \n O Venceu';
+        message.innerText = 'GAME OVER \n O VENCEU';
     } else {
-        message.innerText = 'GAME OVER \n Deu Velha';
+        message.innerText = 'GAME OVER \n DEU VELHA';
     }
 }
 
@@ -101,7 +101,7 @@ function mainMenu() {
     menu.style.display = 'block';
     menuImg.style.display = 'block';
     hash.style.display = 'none';
-    replay("menu");
+    replay('menu');
 }
 
 // Single Player mode

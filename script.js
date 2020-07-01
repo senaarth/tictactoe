@@ -76,9 +76,20 @@ function replay(menu) {
     endgame.style.display = 'none';
     plays1 = plays2 = 0;
 
-    if (menu == 'menu') {
+    if (menu == 'single') {
         for (i = 0; i < fields.length; i++) {
             fields[i].removeEventListener('click', multiPlayer)
+        }
+    } else if (menu == 'multi') {
+        for (i = 0; i < fields.length; i++) {
+            fields[i].removeEventListener('click', singlePlayerFunction)
+        }
+    } else if (menu == 'menu') {
+        for (i = 0; i < fields.length; i++) {
+            fields[i].removeEventListener('click', multiPlayer)
+        }
+        for (i = 0; i < fields.length; i++) {
+            fields[i].removeEventListener('click', singlePlayerFunction)
         }
     }
 }
@@ -89,8 +100,10 @@ function start(gameMode) {
     menuImg.style.display = 'none';
     hash.style.display = 'block';
     if (gameMode == 'single') {
+        replay('multi');
         singleMode();
     } else if (gameMode == 'multi') {
+        replay('single');
         pvp();
     }
 }
@@ -107,33 +120,33 @@ function mainMenu() {
 function singleMode() {
     console.log("singleplayer rodando")
     for (i = 0; i < fields.length; i++) {
-        fields[i].addEventListener('click', function() {
-                let filled;
-                if (this.innerText == '') {
-                    filled = false;
-                } else {
-                    filled = true;
-                }
-                if (checkWin()) {
-                    filled = true;
-                }
-                if (!filled) {
-                    // filling the field after verifying which turn is
-                    counter++;
-                    if (plays1 == plays2 && plays1 != 4) {
-                        this.innerText = 'X';
-                        plays1++;
-                        cpuPlay()
-                    } else if (plays2 == 4) {
-                        this.innerText = 'X'
-                        counter = 9
-                    }
-                }
-                checkWin();
-            })
-            // Verifying if the field is filled
-
+        fields[i].addEventListener('click', singlePlayerFunction)
     }
+}
+
+let singlePlayerFunction = function jogada1() {
+    let filled;
+    if (this.innerText == '') {
+        filled = false;
+    } else {
+        filled = true;
+    }
+    if (checkWin()) {
+        filled = true;
+    }
+    if (!filled) {
+        // filling the field after verifying which turn is
+        counter++;
+        if (plays1 == plays2 && plays1 != 4) {
+            this.innerText = 'X';
+            plays1++;
+            cpuPlay()
+        } else if (plays2 == 4) {
+            this.innerText = 'X'
+            counter = 9
+        }
+    }
+    checkWin();
 }
 
 // AI
@@ -162,7 +175,7 @@ function pvp() {
     }
 }
 
-let multiPlayer = function jogada() {
+let multiPlayer = function jogada2() {
     console.log("multiplayer rodando")
         // Verifying if the field is filled
     let filled;

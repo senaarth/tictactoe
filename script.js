@@ -17,6 +17,7 @@ let menu = document.getElementById('menu');
 let menuImg = document.getElementById('menuImg');
 let hash = document.getElementById('hash');
 let counter = 0;
+let 
 
 
 
@@ -119,10 +120,14 @@ function singleMode() {
                 if (!filled) {
                     // filling the field after verifying which turn is
                     counter++;
-                    if (plays1 == plays2) {
+                    if (plays1 == plays2 && plays1!=4) {
                         this.innerText = 'X';
                         plays1++;
-                        cpuPlay();
+                        cpuPlay()
+                    }
+                    else if(plays2==4){
+                        this.innerText = 'X'
+                        counter=9
                     }
                 }
                 checkWin();

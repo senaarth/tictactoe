@@ -19,36 +19,6 @@ let counter = 0;
 
 
 
-// Two Players function
-function pvp() {
-    // Adding click in each field
-    for (i = 0; i < fields.length; i++) {
-        fields[i].addEventListener('click', function() {
-            // Verifying if the field is filled
-            let filled;
-            if (this.innerText == '') {
-                filled = false;
-            } else {
-                filled = true;
-            }
-            if (checkWin()) {
-                filled = true;
-            }
-            if (!filled) {
-                // filling the field after verifying which turn is
-                counter++;
-                if (plays1 == plays2) {
-                    this.innerText = 'X';
-                    plays1++;
-                } else {
-                    this.innerText = 'O';
-                    plays2++;
-                }
-            }
-            checkWin();
-        })
-    }
-}
 
 // function for check possible winner
 function checkWin() {
@@ -108,13 +78,13 @@ function replay() {
 }
 
 // Function for start the game
-function start(numPlayers) {
+function start(gameMode) {
     menu.style.display = 'none';
     hash.style.display = 'block';
-    if (numPlayers == 'pvp') {
+    if (gameMode == 'single') {
+        singleMode();
+    } else if (gameMode == 'multi') {
         pvp();
-    } else if (numPlayers == 'single') {
-        cpuPlay();
     }
 }
 
@@ -126,7 +96,41 @@ function mainMenu() {
 }
 
 // Single Player mode
+function singleMode() {
 
+}
+// AI
 function cpuPlay() {
 
+}
+
+// Two Players function
+function pvp() {
+    // Adding click in each field
+    for (i = 0; i < fields.length; i++) {
+        fields[i].addEventListener('click', function() {
+            // Verifying if the field is filled
+            let filled;
+            if (this.innerText == '') {
+                filled = false;
+            } else {
+                filled = true;
+            }
+            if (checkWin()) {
+                filled = true;
+            }
+            if (!filled) {
+                // filling the field after verifying which turn is
+                counter++;
+                if (plays1 == plays2) {
+                    this.innerText = 'X';
+                    plays1++;
+                } else {
+                    this.innerText = 'O';
+                    plays2++;
+                }
+            }
+            checkWin();
+        })
+    }
 }

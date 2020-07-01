@@ -75,6 +75,10 @@ function replay() {
     }
     endgame.style.display = 'none';
     plays1 = plays2 = 0;
+
+    for (i = 0; i < fields.length; i++) {
+        fields[i].removeEventListener('click', multiPlayer)
+    }
 }
 
 // Function for start the game
@@ -108,29 +112,31 @@ function cpuPlay() {
 function pvp() {
     // Adding click in each field
     for (i = 0; i < fields.length; i++) {
-        fields[i].addEventListener('click', function() {
-            // Verifying if the field is filled
-            let filled;
-            if (this.innerText == '') {
-                filled = false;
-            } else {
-                filled = true;
-            }
-            if (checkWin()) {
-                filled = true;
-            }
-            if (!filled) {
-                // filling the field after verifying which turn is
-                counter++;
-                if (plays1 == plays2) {
-                    this.innerText = 'X';
-                    plays1++;
-                } else {
-                    this.innerText = 'O';
-                    plays2++;
-                }
-            }
-            checkWin();
-        })
+        fields[i].addEventListener('click', multiPlayer)
     }
+}
+
+let multiPlayer = function jogada() {
+    // Verifying if the field is filled
+    let filled;
+    if (this.innerText == '') {
+        filled = false;
+    } else {
+        filled = true;
+    }
+    if (checkWin()) {
+        filled = true;
+    }
+    if (!filled) {
+        // filling the field after verifying which turn is
+        counter++;
+        if (plays1 == plays2) {
+            this.innerText = 'X';
+            plays1++;
+        } else {
+            this.innerText = 'O';
+            plays2++;
+        }
+    }
+    checkWin();
 }

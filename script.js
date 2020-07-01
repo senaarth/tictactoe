@@ -17,7 +17,6 @@ let menu = document.getElementById('menu');
 let menuImg = document.getElementById('menuImg');
 let hash = document.getElementById('hash');
 let counter = 0;
-let 
 
 
 
@@ -106,6 +105,7 @@ function mainMenu() {
 
 // Single Player mode
 function singleMode() {
+    console.log("singleplayer rodando")
     for (i = 0; i < fields.length; i++) {
         fields[i].addEventListener('click', function() {
                 let filled;
@@ -120,14 +120,13 @@ function singleMode() {
                 if (!filled) {
                     // filling the field after verifying which turn is
                     counter++;
-                    if (plays1 == plays2 && plays1!=4) {
+                    if (plays1 == plays2 && plays1 != 4) {
                         this.innerText = 'X';
                         plays1++;
                         cpuPlay()
-                    }
-                    else if(plays2==4){
+                    } else if (plays2 == 4) {
                         this.innerText = 'X'
-                        counter=9
+                        counter = 9
                     }
                 }
                 checkWin();
@@ -139,16 +138,18 @@ function singleMode() {
 
 // AI
 function cpuPlay() {
-    let random;
-    do {
-        random = Math.floor(Math.random() * 9);
-    } while (fields[random].innerText != '');
+    if (!checkWin()) {
+        let random;
+        do {
+            random = Math.floor(Math.random() * 9);
+        } while (fields[random].innerText != '');
 
-    for (i = 0; i < fields.length; i++) {
-        fields[random].innerText = 'O';
-        plays2++;
         for (i = 0; i < fields.length; i++) {
-            fields[i].addEventListener('click', singleMode());
+            fields[random].innerText = 'O';
+            plays2++;
+            for (i = 0; i < fields.length; i++) {
+                fields[i].addEventListener('click', singleMode());
+            }
         }
     }
 }
@@ -162,7 +163,8 @@ function pvp() {
 }
 
 let multiPlayer = function jogada() {
-    // Verifying if the field is filled
+    console.log("multiplayer rodando")
+        // Verifying if the field is filled
     let filled;
     if (this.innerText == '') {
         filled = false;

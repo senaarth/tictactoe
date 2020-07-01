@@ -20,7 +20,6 @@ let counter = 0;
 
 
 
-
 // function for check possible winner
 function checkWin() {
     if (
@@ -106,11 +105,43 @@ function mainMenu() {
 
 // Single Player mode
 function singleMode() {
-
-}
+    for (i = 0; i < fields.length; i++) {
+        fields[i].addEventListener('click', function(){let filled;
+            if (this.innerText == '') {
+                filled = false;
+            } else {
+                filled = true;
+            }
+            if (checkWin()) {
+                filled = true;
+            }
+            if (!filled) {
+                // filling the field after verifying which turn is
+                counter++;
+                if (plays1 == plays2) {
+                    this.innerText = 'X';
+                    plays1++;
+                    cpuPlay()
+                } 
+            }
+            checkWin();
+        })
+    // Verifying if the field is filled
+        
+    }}
 // AI
 function cpuPlay() {
-
+    let random;
+    do{
+        random = Math.floor(Math.random() * 9)
+    }   while (fields[random].innerText!='')
+            for (i = 0; i < fields.length; i++) {
+                fields[random].innerText = 'O'
+                plays2++
+                for (i = 0; i < fields.length; i++) {
+                    fields[i].addEventListener('click', singleMode())
+                }
+            }
 }
 
 // Two Players function
@@ -137,11 +168,12 @@ let multiPlayer = function jogada() {
         counter++;
         if (plays1 == plays2) {
             this.innerText = 'X';
-            plays1++;
-        } else {
-            this.innerText = 'O';
-            plays2++;
+            plays1++;      
         }
+        else{
+            this.innerText = 'O'
+            plays2++
+        } 
     }
     checkWin();
 }

@@ -20,6 +20,110 @@ let counter = 0;
 
 
 
+// Start The Game Function
+function start(gameMode) {
+    menu.style.display = 'none';
+    menuImg.style.display = 'none';
+    hash.style.display = 'block';
+    if (gameMode == 'single') {
+        replay('multi');
+        singleMode();
+    } else if (gameMode == 'multi') {
+        replay('single');
+        pvp();
+    }
+}
+
+
+// Single Player Mode
+function singleMode() {
+    console.log("singleplayer rodando")
+    for (i = 0; i < fields.length; i++) {
+        fields[i].addEventListener('click', singlePlayerFunction)
+    }
+}
+
+// Single Player Function
+function cpuPlay() {
+    if (!checkWin()) {
+        let random;
+        do {
+            random = Math.floor(Math.random() * 9);
+        } while (fields[random].innerText != '');
+
+        for (i = 0; i < fields.length; i++) {
+            fields[random].innerText = 'O';
+            plays2++;
+            for (i = 0; i < fields.length; i++) {
+                fields[i].addEventListener('click', singleMode());
+            }
+        }
+    }
+}
+
+// Event Listener Function Single Player
+let singlePlayerFunction = function jogada1() {
+    let filled;
+    if (this.innerText == '') {
+        filled = false;
+    } else {
+        filled = true;
+    }
+    if (checkWin()) {
+        filled = true;
+    }
+    if (!filled) {
+        // filling the field after verifying which turn is
+        counter++;
+        if (plays1 == plays2 && plays1 != 4) {
+            this.innerText = 'X';
+            plays1++;
+            cpuPlay()
+        } else if (plays2 == 4) {
+            this.innerText = 'X'
+            counter = 9
+        }
+    }
+    checkWin();
+}
+
+
+// Two Players Function
+function pvp() {
+    // Adding click in each field
+    for (i = 0; i < fields.length; i++) {
+        fields[i].addEventListener('click', multiPlayerFunction);
+    }
+}
+
+// Event Listener Function Multi Player
+let multiPlayerFunction = function jogada2() {
+    console.log("multiplayer rodando")
+        // Verifying if the field is filled
+    let filled;
+    if (this.innerText == '') {
+        filled = false;
+    } else {
+        filled = true;
+    }
+    if (checkWin()) {
+        filled = true;
+    }
+    if (!filled) {
+        // filling the field after verifying which turn is
+        counter++;
+        if (plays1 == plays2) {
+            this.innerText = 'X';
+            plays1++;
+        } else {
+            this.innerText = 'O'
+            plays2++
+        }
+    }
+    checkWin();
+}
+
+
 // function for check possible winner
 function checkWin() {
     if (
@@ -54,6 +158,7 @@ function checkWin() {
     }
 }
 
+
 // Game Over Function
 function gameOver(winner) {
     counter = 0;
@@ -78,33 +183,19 @@ function replay(menu) {
 
     if (menu == 'single') {
         for (i = 0; i < fields.length; i++) {
-            fields[i].removeEventListener('click', multiPlayer)
+            fields[i].removeEventListener('click', multiPlayerFunction);
         }
     } else if (menu == 'multi') {
         for (i = 0; i < fields.length; i++) {
-            fields[i].removeEventListener('click', singlePlayerFunction)
+            fields[i].removeEventListener('click', singlePlayerFunction);
         }
     } else if (menu == 'menu') {
         for (i = 0; i < fields.length; i++) {
-            fields[i].removeEventListener('click', multiPlayer)
+            fields[i].removeEventListener('click', multiPlayerFunction);
         }
         for (i = 0; i < fields.length; i++) {
-            fields[i].removeEventListener('click', singlePlayerFunction)
+            fields[i].removeEventListener('click', singlePlayerFunction);
         }
-    }
-}
-
-// Function for start the game
-function start(gameMode) {
-    menu.style.display = 'none';
-    menuImg.style.display = 'none';
-    hash.style.display = 'block';
-    if (gameMode == 'single') {
-        replay('multi');
-        singleMode();
-    } else if (gameMode == 'multi') {
-        replay('single');
-        pvp();
     }
 }
 
@@ -114,89 +205,4 @@ function mainMenu() {
     menuImg.style.display = 'block';
     hash.style.display = 'none';
     replay('menu');
-}
-
-// Single Player mode
-function singleMode() {
-    console.log("singleplayer rodando")
-    for (i = 0; i < fields.length; i++) {
-        fields[i].addEventListener('click', singlePlayerFunction)
-    }
-}
-
-let singlePlayerFunction = function jogada1() {
-    let filled;
-    if (this.innerText == '') {
-        filled = false;
-    } else {
-        filled = true;
-    }
-    if (checkWin()) {
-        filled = true;
-    }
-    if (!filled) {
-        // filling the field after verifying which turn is
-        counter++;
-        if (plays1 == plays2 && plays1 != 4) {
-            this.innerText = 'X';
-            plays1++;
-            cpuPlay()
-        } else if (plays2 == 4) {
-            this.innerText = 'X'
-            counter = 9
-        }
-    }
-    checkWin();
-}
-
-// AI
-function cpuPlay() {
-    if (!checkWin()) {
-        let random;
-        do {
-            random = Math.floor(Math.random() * 9);
-        } while (fields[random].innerText != '');
-
-        for (i = 0; i < fields.length; i++) {
-            fields[random].innerText = 'O';
-            plays2++;
-            for (i = 0; i < fields.length; i++) {
-                fields[i].addEventListener('click', singleMode());
-            }
-        }
-    }
-}
-
-// Two Players function
-function pvp() {
-    // Adding click in each field
-    for (i = 0; i < fields.length; i++) {
-        fields[i].addEventListener('click', multiPlayer)
-    }
-}
-
-let multiPlayer = function jogada2() {
-    console.log("multiplayer rodando")
-        // Verifying if the field is filled
-    let filled;
-    if (this.innerText == '') {
-        filled = false;
-    } else {
-        filled = true;
-    }
-    if (checkWin()) {
-        filled = true;
-    }
-    if (!filled) {
-        // filling the field after verifying which turn is
-        counter++;
-        if (plays1 == plays2) {
-            this.innerText = 'X';
-            plays1++;
-        } else {
-            this.innerText = 'O'
-            plays2++
-        }
-    }
-    checkWin();
 }

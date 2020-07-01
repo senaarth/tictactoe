@@ -19,32 +19,35 @@ let counter = 0;
 
 
 
-// Adding click in each field
-for (i = 0; i < fields.length; i++) {
-    fields[i].addEventListener('click', function() {
-        // Verifying if the field is filled
-        let filled;
-        if (this.innerText == '') {
-            filled = false;
-        } else {
-            filled = true;
-        }
-        if (checkWin()) {
-            filled = true;
-        }
-        if (!filled) {
-            // filling the field after verifying which turn is
-            counter++;
-            if (plays1 == plays2) {
-                this.innerText = 'X';
-                plays1++;
+// Two Players function
+function pvp() {
+    // Adding click in each field
+    for (i = 0; i < fields.length; i++) {
+        fields[i].addEventListener('click', function() {
+            // Verifying if the field is filled
+            let filled;
+            if (this.innerText == '') {
+                filled = false;
             } else {
-                this.innerText = 'O';
-                plays2++;
+                filled = true;
             }
-        }
-        checkWin();
-    })
+            if (checkWin()) {
+                filled = true;
+            }
+            if (!filled) {
+                // filling the field after verifying which turn is
+                counter++;
+                if (plays1 == plays2) {
+                    this.innerText = 'X';
+                    plays1++;
+                } else {
+                    this.innerText = 'O';
+                    plays2++;
+                }
+            }
+            checkWin();
+        })
+    }
 }
 
 // function for check possible winner
@@ -105,9 +108,14 @@ function replay() {
 }
 
 // Function for start the game
-function start() {
+function start(numPlayers) {
     menu.style.display = 'none';
     hash.style.display = 'block';
+    if (numPlayers == 'pvp') {
+        pvp();
+    } else if (numPlayers == 'single') {
+        cpuPlay();
+    }
 }
 
 // Return to menu function
@@ -115,4 +123,10 @@ function mainMenu() {
     menu.style.display = 'block';
     hash.style.display = 'none';
     replay();
+}
+
+// Single Player mode
+
+function cpuPlay() {
+
 }

@@ -23,18 +23,18 @@ img#menuImg {
 div#endgame {
     position: absolute;
     left: 50%;
-    margin-left: -155px;
+    margin-left: -171px;
     top: 30%;
-    margin-top: -155px;
+    margin-top: -171px;
     text-align: center;
     display: block;
-    height: 310px;
-    width: 310px;
+    height: 580px;
+    width: 342px;
     justify-content: center;
     display: none;
 }
 
-div#menu button {
+button {
     border: none;
     padding: 10px 15px;
     margin: 0 10px;
@@ -51,14 +51,18 @@ table {
     border-collapse: collapse;
     position: absolute;
     left: 50%;
-    margin-left: -155px;
+    margin-left: -171px;
     top: 50%;
-    margin-top: -155px;
+    margin-top: -171px;
     display: none;
+    background-color: #f9ad7f;
+    border: 10px solid #bf7a53;
+    padding: 6px;
 }
 
 table tr td {
-    border: 2px solid #000000;
+    border: 2px solid #cb8e6b;
+    color: #cb8e6b;
     width: 100px;
     height: 100px;
     font-size: 70px;

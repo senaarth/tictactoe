@@ -15,7 +15,7 @@ let message = document.getElementById('gameover')
 let endgame = document.getElementById('endgame');
 let menu = document.getElementById('menu')
 let hash = document.getElementById('hash')
-
+let counter = 0;
 
 
 
@@ -34,6 +34,7 @@ for (i = 0; i < fields.length; i++) {
         }
         if (!filled) {
             // filling the field after verifying which turn is
+            counter++;
             if (plays1 == plays2) {
                 this.innerText = "X";
                 plays1++;
@@ -75,21 +76,27 @@ function checkWin() {
             gameOver("O");
         }, 250)
         return true;
+    } else if (counter == 9) {
+        gameOver();
     }
 }
 
 // Game Over Function
 function gameOver(winner) {
+    counter = 0;
     endgame.style.display = "block";
     if (winner == 'X') {
         message.innerText = 'GAME OVER \n X Venceu'
     } else if (winner == 'O') {
         message.innerText = 'GAME OVER \n O Venceu'
+    } else {
+        message.innerText = 'GAME OVER \n Deu Velha'
     }
 }
 
 // Replay Button
 function replay() {
+    counter = 0;
     for (i = 0; i < fields.length; i++) {
         fields[i].innerText = "";
     }
@@ -98,7 +105,7 @@ function replay() {
 }
 
 // Function for start the game
-function start(){
+function start() {
     menu.style.display = 'none'
     hash.style.display = 'block'
 }

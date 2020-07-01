@@ -6,7 +6,7 @@ div#menu {
     position: absolute;
     left: 50%;
     margin-left: -155px;
-    bottom: 30%;
+    bottom: 15%;
     text-align: center;
     display: block;
     justify-content: center;
@@ -14,8 +14,10 @@ div#menu {
 
 img#menuImg {
     position: absolute;
-    height: 100%;
-    width: 100%;
+    top: 50%;
+    margin-top: -450px;
+    left: 50%;
+    margin-left: -960px;
 }
 
 div#endgame {

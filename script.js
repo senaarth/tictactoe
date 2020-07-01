@@ -12,6 +12,9 @@ let casa7 = document.getElementById('7')
 let casa8 = document.getElementById('8')
 let casa9 = document.getElementById('9')
 let message = document.getElementById('gameover')
+let endgame = document.getElementById('endgame');
+let menu = document.getElementById('menu')
+let hash = document.getElementById('hash')
 
 
 
@@ -77,7 +80,6 @@ function checkWin() {
 
 // Game Over Function
 function gameOver(winner) {
-    var endgame = document.getElementById('endgame');
     endgame.style.display = "block";
     if (winner == 'X') {
         message.innerText = 'GAME OVER \n X Venceu'
@@ -93,4 +95,10 @@ function replay() {
     }
     endgame.style.display = "none";
     plays1 = plays2 = 0;
+}
+
+// Function for start the game
+function start(){
+    menu.style.display = 'none'
+    hash.style.display = 'block'
 }

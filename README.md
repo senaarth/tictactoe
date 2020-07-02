@@ -1,3 +1,3 @@
 # tictactoe
 TicTacToe game developed in JavaScript.
-Designed by @barbaragads
+Designed by https://www.github.com/barbaragads

@@ -37,7 +37,6 @@ function start(gameMode) {
 
 // Single Player Mode
 function singleMode() {
-    console.log("singleplayer rodando")
     for (i = 0; i < fields.length; i++) {
         fields[i].addEventListener('click', singlePlayerFunction)
     }
@@ -98,8 +97,7 @@ function pvp() {
 
 // Event Listener Function Multi Player
 let multiPlayerFunction = function jogada2() {
-    console.log("multiplayer rodando")
-        // Verifying if the field is filled
+    // Verifying if the field is filled
     let filled;
     if (this.innerText == '') {
         filled = false;

@@ -4,11 +4,10 @@ body {
 
 div#menu {
     position: absolute;
-    left: 50%;
+    left: 42.5%;
     margin-left: -155px;
-    bottom: 15%;
+    bottom: 10%;
     text-align: center;
-    display: block;
     justify-content: center;
 }
 
@@ -43,6 +42,17 @@ button {
     margin: 0 10px;
     border-radius: 15%;
     cursor: pointer;
+}
+
+input {
+    width: 210px;
+    height: 70px;
+}
+
+input#twoplayers {
+    width: 210px;
+    height: 70px;
+    margin-left: 100px;
 }
 
 table {

@@ -22,7 +22,7 @@ let menuImg = document.getElementById('menuImg');
 let hash = document.getElementById('hash');
 let scoreboard = document.getElementById('scoreboard');
 let counter = 0;
-let acabouCaralho = false;
+let isOver = false;
 
 
 
@@ -50,7 +50,7 @@ function singleMode() {
 
 // Single Player Function
 function cpuPlay() {
-    if (!acabouCaralho) {
+    if (!isOver) {
         let random;
         do {
             random = Math.floor(Math.random() * 9);
@@ -59,6 +59,7 @@ function cpuPlay() {
         for (i = 0; i < fields.length; i++) {
             fields[random].innerText = 'O';
             plays2++;
+            checkWin()
             for (i = 0; i < fields.length; i++) {
                 fields[i].addEventListener('click', singleMode());
             }
@@ -76,20 +77,21 @@ let singlePlayerFunction = function jogada1() {
     }
     if (checkWin()) {
         filled = true;
-    }
+    }    
     if (!filled) {
         // filling the field after verifying which turn is
         counter++;
         if (plays1 == plays2 && plays1 != 4) {
             this.innerText = 'X';
             plays1++;
+            checkWin();
             cpuPlay()
         } else if (plays2 == 4) {
             this.innerText = 'X'
             counter = 9
+            checkWin()
         }
     }
-    checkWin();
 }
 
 
@@ -141,6 +143,7 @@ function checkWin() {
         casa3.innerText == 'X' && casa5.innerText == 'X' && casa7.innerText == 'X'
     ) {
         wins1++;
+        isOver = true
         setTimeout(function() {
             gameOver('X');
             score('X', wins1);
@@ -156,6 +159,7 @@ function checkWin() {
         casa1.innerText == 'O' && casa5.innerText == 'O' && casa9.innerText == 'O' ||
         casa3.innerText == 'O' && casa5.innerText == 'O' && casa7.innerText == 'O') {
         wins2++;
+        isOver = true
         setTimeout(function() {
             gameOver('O');
             score('O', wins2);
@@ -169,7 +173,6 @@ function checkWin() {
 
 // Game Over Function
 function gameOver(winner) {
-    acabouCaralho = true;
     counter = 0;
     endgame.style.display = 'block';
     if (winner == 'X') {
@@ -191,7 +194,7 @@ function score(winner, score) {
 
 // Replay Button
 function replay(menu) {
-    acabouCaralho = false;
+    isOver = false;
     counter = 0;
     for (i = 0; i < fields.length; i++) {
         fields[i].innerText = '';

@@ -22,6 +22,7 @@ let menuImg = document.getElementById('menuImg');
 let hash = document.getElementById('hash');
 let scoreboard = document.getElementById('scoreboard');
 let counter = 0;
+let acabouCaralho = false;
 
 
 
@@ -49,7 +50,7 @@ function singleMode() {
 
 // Single Player Function
 function cpuPlay() {
-    if (!checkWin()) {
+    if (!acabouCaralho) {
         let random;
         do {
             random = Math.floor(Math.random() * 9);
@@ -168,6 +169,7 @@ function checkWin() {
 
 // Game Over Function
 function gameOver(winner) {
+    acabouCaralho = true;
     counter = 0;
     endgame.style.display = 'block';
     if (winner == 'X') {
@@ -189,6 +191,7 @@ function score(winner, score) {
 
 // Replay Button
 function replay(menu) {
+    acabouCaralho = false;
     counter = 0;
     for (i = 0; i < fields.length; i++) {
         fields[i].innerText = '';

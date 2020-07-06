@@ -19,6 +19,30 @@ img#menuImg {
     margin-left: -960px;
 }
 
+div#scoreboard {
+    position: absolute;
+    left: 50%;
+    margin-left: -171px;
+    background-color: #bf7a53;
+    width: 310px;
+    bottom: 12%;
+    border: 10px solid #bf7a53;
+    padding: 6px;
+    display: flex;
+    flex-direction: row;
+    color: #f9ad7f;
+    font-size: 30px;
+    display: none;
+}
+
+div#scoreboard p#wins1 {
+    margin-left: 50px;
+}
+
+div#scoreboard p#wins2 {
+    margin-left: 100px;
+}
+
 div#endgame {
     font-size: 15px;
     color: #cb8e6b;

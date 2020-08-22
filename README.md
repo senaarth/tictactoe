@@ -6,21 +6,21 @@
 <br>
 <br>
 
-## HOW TO INIT THE APPLICATION
+## HOW TO RUN THE APPLICATION
 
-<p>In the terminal, clone the project</p>
+<p>After cloning the project:</p>
 
 ~~~shell
 git clone https://github.com/senaarth/tictactoe.git
 ~~~
 
-<p>Before, enter in the folder</p>
+<p>Enter in the folder</p>
 
 ~~~shell
 cd tictactoe
 ~~~
 
-<p>Finally, open the index.html file.</p>
+<p>And then open the index.html file.</p>
 
 <br>
 
